@@ -3,12 +3,13 @@
   color: white;
   display: flex;
   justify-content: center;
+  position: relative;
 }
 
 .headerContainer {
   width: 100%;
   max-width: 1024px;
-  margin: 20px 0 120px 0;
+  margin: 20px 0 100px 0;
 }
 
 .headerList {
@@ -26,4 +27,52 @@
   border: 2px solid white;
   padding: 16px;
   border-radius: 10em;
+}
+
+.headerSubTitle {
+  margin: 20px 0;
+}
+
+.headerBtn {
+  background-color: #0071c2;
+  color: white;
+  font-weight: 600;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  outline: none;
+}
+
+.headerSearch {
+  height: 30px;
+  background-color: white;
+  border: 3px solid #febb02;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 10px 0;
+  border-radius: 5px;
+  position: absolute;
+  bottom: -25px;
+  width: 100%;
+  max-width: 1024px;
+}
+
+.headerIcon {
+  color: lightgray;
+}
+
+.headerSearchItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.headerSearchInput {
+  border: none;
+  outline: none;
+}
+
+.headerSearchText {
+  color: lightgray;
 }
