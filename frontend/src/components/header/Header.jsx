@@ -9,6 +9,7 @@ import {
   faCalendarDays,
   faPerson,
 } from "@fortawesome/free-solid-svg-icons";
+import {DateRange} from 'react-date-range'
 
 const Header = () => {
   return (
