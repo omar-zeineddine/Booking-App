@@ -1,3 +1,4 @@
+import Button from "../button/Button";
 import "./searchItem.css";
 
 const SearchItem = () => {
