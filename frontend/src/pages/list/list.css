@@ -30,6 +30,10 @@
   flex: 3;
 }
 
+.lsOptions {
+  padding: 10px;
+}
+
 .lsItem {
   display: flex;
   flex-direction: column;
@@ -54,4 +58,28 @@
   display: flex;
   align-items: center;
   cursor: pointer;
+}
+
+.lsOptionItem {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.lsOptionInput {
+  width: 50px;
+}
+
+.listSearch > button {
+  padding: 10px;
+  background-color: #0071c2;
+  color: white;
+  border: none;
+  font-weight: 600;
+  width: 100%;
+  cursor: pointer;
+}
+
+.listSearch > button:hover {
+  opacity: 0.8;
 }
