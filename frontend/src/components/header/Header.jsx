@@ -11,6 +11,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { DateRange } from "react-date-range";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 // date-range styles
 import "react-date-range/dist/styles.css"; // main css file
@@ -29,6 +30,8 @@ const Header = ({ type }) => {
       key: "selection",
     },
   ]);
+  // destinations
+  const [destination, setDestination] = useState("");
 
   const [openOptions, setOpenOptions] = useState(false);
   const [options, setOptions] = useState({
@@ -47,9 +50,19 @@ const Header = ({ type }) => {
     });
   };
 
+  // handle search function
+  const navigate = useNavigate();
+  const handleSearch = () => {
+    navigate("/hotels", { state: { destination, date, options } });
+  };
+
   return (
     <div className="header">
-      <div className={type === "list" ? "headerContainer listMode" : "headerContainer"}>
+      <div
+        className={
+          type === "list" ? "headerContainer listMode" : "headerContainer"
+        }
+      >
         <div className="headerList">
           <div className="headerListItem active">
             <FontAwesomeIcon icon={faBed} />
@@ -72,7 +85,7 @@ const Header = ({ type }) => {
             <span>taxis</span>
           </div>
         </div>
-        {type !== "list" &&
+        {type !== "list" && (
           <>
             <h1 className="headerTitle">
               A lifetime of discounts? It's a Genius.
@@ -89,6 +102,7 @@ const Header = ({ type }) => {
                   type="text"
                   placeholder="where are you going?"
                   className="headerSearchInput"
+                  onChange={(e) => setDestination(e.target.value)}
                 />
               </div>
               <div className="headerSearchItem">
@@ -185,10 +199,13 @@ const Header = ({ type }) => {
                 )}
               </div>
               <div className="headerSearchItem">
-                <button className="headerBtn">Search</button>
+                <button className="headerBtn" onClick={handleSearch}>
+                  Search
+                </button>
               </div>
             </div>
-          </>}
+          </>
+        )}
       </div>
     </div>
   );
