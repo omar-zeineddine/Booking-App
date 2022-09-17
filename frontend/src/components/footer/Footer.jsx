@@ -1,4 +1,5 @@
 import React from "react";
+import "./footer.css";
 
 const Footer = () => {
   return (
@@ -44,6 +45,9 @@ const Footer = () => {
             <li className="fListItem">Investor relations</li>
             <li className="fListItem">Terms & conditions</li>
           </ul>
+        </div>
+        <div className="fText">
+          <p>Copyright © {new Date().getFullYear()} - Booking</p>
         </div>
       </div>
     </div>
