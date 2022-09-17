@@ -52,7 +52,7 @@ const Hotel = () => {
             ))}
           </div>
           <div className="hotelDetails">
-            <div className="hotelDetailTexts">
+            <div className="hotelDetailsTexts">
               <p className="hotelDesc">
                 Located a 5-minute walk from St. Florian's Gate in Krakow, Tower
                 Street Apartments has accommodations with air conditioning and
@@ -67,7 +67,7 @@ const Hotel = () => {
                 airport shuttle service.
               </p>
             </div>
-            <div className="hotelDetailPrice">
+            <div className="hotelDetailsPrice">
               <h1>Perfect for a 9-night stay!</h1>
               <span>
                 Located in the real heart of Krakow, this property has an
