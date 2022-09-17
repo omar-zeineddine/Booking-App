@@ -4,8 +4,13 @@ import Navbar from "../../components/navbar/Navbar";
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
 import MailList from "../../components/mailList/MailList";
-import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCircleArrowLeft,
+  faCircleArrowRight,
+  faLocationDot,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleXmark } from "@fortawesome/free-regular-svg-icons";
 
 const Hotel = () => {
   // slider states
@@ -43,7 +48,28 @@ const Hotel = () => {
       <Navbar />
       <Header type="list" />
       <div className="hotelContainer">
-        {open && <div className="slider"></div>}
+        {open && (
+          <div className="slider">
+            <FontAwesomeIcon
+              icon={faCircleXmark}
+              onClick={() => setOpen(false)}
+              className="close"
+            />
+            <FontAwesomeIcon
+              icon={faCircleArrowLeft}
+              onClick={() => handleMove("l")}
+              className="arrow"
+            />
+            <div className="sliderWrapper">
+              <img src={photos[slideNumber].src} alt="" className="sliderImg" />
+            </div>
+            <FontAwesomeIcon
+              icon={faCircleArrowRight}
+              onClick={() => handleMove("r")}
+              className="arrow"
+            />
+          </div>
+        )}
         <div className="hotelWrapper">
           <button className="bookNow">Reserve or Book Now!</button>
           <h1 className="hotelTitle">Grand Hotel</h1>
