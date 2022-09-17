@@ -21,3 +21,9 @@
   color: #003580;
   cursor: pointer;
 }
+
+.fText {
+  text-align: center;
+  font-weight: 500;
+  padding: 2em 0;
+}
