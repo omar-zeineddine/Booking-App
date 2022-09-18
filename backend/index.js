@@ -13,6 +13,14 @@ const connect = async () => {
   }
 };
 
+// monitor mongoDB connection
+mongoose.connection.on("disconnected", () => {
+  console.log("mongoDB disconnected");
+});
+mongoose.connection.on("connected", () => {
+  console.log("mongoDB connected");
+});
+
 // port
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
