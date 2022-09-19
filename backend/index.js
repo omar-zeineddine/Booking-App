@@ -4,6 +4,9 @@ import mongoose from "mongoose";
 const app = express();
 dotenv.config();
 
+// routes
+import authRoute from "./routes/auth.js";
+
 const connect = async () => {
   try {
     await mongoose.connect(process.env.MONGO);
@@ -17,9 +20,9 @@ const connect = async () => {
 mongoose.connection.on("disconnected", () => {
   console.log("mongoDB disconnected");
 });
-mongoose.connection.on("connected", () => {
-  console.log("mongoDB connected");
-});
+
+// middlewares
+app.use("/auth", authRoute);
 
 // port
 const PORT = process.env.PORT || 5000;

@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node index.js",
     "watch": "nodemon index.js",
-    "dev": "concurrently \"npm run watch\" \"cd ../frontend && npm run dev\"",
+    "dev": "concurrently \"npm run watch\" \"cd ../frontend && npm start\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
