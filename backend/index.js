@@ -6,6 +6,7 @@ dotenv.config();
 
 // routes
 import authRoute from "./routes/auth.js";
+import hotelsRoute from "./routes/hotels.js";
 
 const connect = async () => {
   try {
@@ -21,8 +22,11 @@ mongoose.connection.on("disconnected", () => {
   console.log("mongoDB disconnected");
 });
 
-// middlewares
-app.use("/auth", authRoute);
+// middleware
+app.use(express.json());
+
+app.use("/api/v1/auth", authRoute);
+app.use("/api/v1/hotels", hotelsRoute);
 
 // port
 const PORT = process.env.PORT || 5000;
