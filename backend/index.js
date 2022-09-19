@@ -28,6 +28,18 @@ app.use(express.json());
 app.use("/api/v1/auth", authRoute);
 app.use("/api/v1/hotels", hotelsRoute);
 
+// error handler
+app.use((err, req, res, next) => {
+  const errorStatus = err.status || 500;
+  const errorMessage = err.message || "something went wrong";
+  return res.status(errorStatus).json({
+    success: false,
+    status: errorStatus,
+    message: errorMessage,
+    stack: err.stack,
+  });
+});
+
 // port
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
