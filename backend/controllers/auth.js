@@ -33,7 +33,8 @@ export const login = async (req, res, next) => {
     // in case pass is wrong
     if (!isPass) return next(createError(400, "Incorrect credentials"));
 
-    res.status(200).json(user);
+    const { password, isAdmin, ...otherDetails } = user._doc;
+    res.status(200).json({ ...otherDetails });
   } catch (err) {
     next(err);
   }
