@@ -1,6 +1,7 @@
 import express from "express";
 import { createError } from "../utils/error.js";
 import {
+  countByCity,
   createHotel,
   deleteHotel,
   getHotel,
@@ -14,7 +15,9 @@ const router = express.Router();
 router.post("/", verifyAdmin, createHotel);
 router.put("/:id", verifyAdmin, updateHotel);
 router.delete("/:id", verifyAdmin, deleteHotel);
-router.get("/:id", getHotel);
+router.get("/find/:id", getHotel);
 router.get("/", getHotels);
+
+router.get("/countByCity", countByCity);
 
 export default router;
