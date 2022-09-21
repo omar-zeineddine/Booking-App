@@ -2,6 +2,7 @@ import express from "express";
 import { createError } from "../utils/error.js";
 import {
   countByCity,
+  countByType,
   createHotel,
   deleteHotel,
   getHotel,
@@ -19,5 +20,6 @@ router.get("/find/:id", getHotel);
 router.get("/", getHotels);
 
 router.get("/countByCity", countByCity);
+router.get("/countByType", countByType);
 
 export default router;
