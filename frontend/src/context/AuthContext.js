@@ -13,7 +13,7 @@ const AuthReducer = (state, action) => {
     case "LOGIN_START":
       return {
         user: null,
-        loading: false,
+        loading: true,
         error: null,
       };
     case "LOGIN_SUCCESS":
