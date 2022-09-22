@@ -20,7 +20,7 @@ const List = () => {
   const { data, loading, error, reFetch } = useFetch(
     `http://localhost:5000/api/v1/hotels?city=${destination}&min=${
       min || 0
-    }&max=${max || 99}`
+    }&max=${max || 9999}`
   );
 
   const handleClick = () => {
