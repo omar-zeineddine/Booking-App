@@ -13,6 +13,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleXmark } from "@fortawesome/free-regular-svg-icons";
 import useFetch from "../../hooks/useFetch";
 import { useLocation } from "react-router-dom";
+import { SearchContext } from "../../context/SearchContext";
+import { useContext } from "react";
+import { parseWithOptions } from "date-fns/fp";
 
 const Hotel = () => {
   const location = useLocation();
@@ -29,6 +32,18 @@ const Hotel = () => {
     setSlideNumber(i);
     setOpen(true);
   };
+
+  const { dates, options } = useContext(SearchContext);
+  // console.log(dates);
+
+  // find duration between dates
+  const MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24;
+  function dayDifference(date1, date2) {
+    const timeDiff = Math.abs(date2.getTime() - date1.getTime());
+    const diffDays = Math.ceil(timeDiff / MILLISECONDS_PER_DAY);
+    return diffDays;
+  }
+  const days = dayDifference(dates[0].endDate, dates[0].startDate);
 
   const handleMove = (direction) => {
     let newSlideNumber;
@@ -106,13 +121,14 @@ const Hotel = () => {
                 <p className="hotelDesc">{data.desc}</p>
               </div>
               <div className="hotelDetailsPrice">
-                <h1>Perfect for a 9-night stay!</h1>
+                <h1>Perfect for a {days}-night stay!</h1>
                 <span>
                   Located in the real heart of Krakow, this property has an
                   excellent location score of 9.8!
                 </span>
                 <h2>
-                  <b>$945</b> (9 nights)
+                  <b>${days * data.cheapestPrice * options.room}</b> ({days}{" "}
+                  nights)
                 </h2>
                 <button>Reserve or Book Now!</button>
               </div>
