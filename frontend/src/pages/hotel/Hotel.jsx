@@ -17,6 +17,7 @@ import { SearchContext } from "../../context/SearchContext";
 import { useContext } from "react";
 import { parseWithOptions } from "date-fns/fp";
 import { AuthContext } from "../../context/AuthContext";
+import Reserve from "../../components/reserve/Reserve";
 
 const navigate = useNavigate();
 
@@ -154,6 +155,7 @@ const Hotel = () => {
           <Footer />
         </div>
       )}
+      {openModal && <Reserve setOpen={setOpenModal} hotelId={id} />}
     </div>
   );
 };
