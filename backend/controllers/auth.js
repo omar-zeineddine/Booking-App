@@ -10,8 +10,7 @@ export const register = async (req, res, next) => {
     const hash = bcrypt.hashSync(req.body.password, salt);
 
     const newUser = new User({
-      username: req.body.username,
-      email: req.body.email,
+      ...req.body,
       password: hash,
     });
 
@@ -26,13 +25,12 @@ export const login = async (req, res, next) => {
   try {
     const user = await User.findOne({ username: req.body.username });
     // check user in db
-    if (!user) return next(createError(404, "user not found"));
+    if (!user) return next(createError(404, "User not found!"));
 
     // compare against pass in db
     const isPass = await bcrypt.compare(req.body.password, user.password);
-
     // in case pass is wrong
-    if (!isPass) return next(createError(400, "Incorrect credentials"));
+    if (!isPass) return next(createError(400, "Wrong password or username!"));
 
     // create new token if credentials match
     const token = jwt.sign(
@@ -46,7 +44,7 @@ export const login = async (req, res, next) => {
         httpOnly: true,
       })
       .status(200)
-      .json({ ...otherDetails });
+      .json({ details: { ...otherDetails }, isAdmin });
   } catch (err) {
     next(err);
   }
