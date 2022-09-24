@@ -15,13 +15,11 @@ import useFetch from "../../hooks/useFetch";
 import { useLocation, useNavigate } from "react-router-dom";
 import { SearchContext } from "../../context/SearchContext";
 import { useContext } from "react";
-import { parseWithOptions } from "date-fns/fp";
 import { AuthContext } from "../../context/AuthContext";
 import Reserve from "../../components/reserve/Reserve";
 
-const navigate = useNavigate();
-
 const Hotel = () => {
+  const navigate = useNavigate();
   const location = useLocation();
   const id = location.pathname.split("/")[2];
   // slider states
@@ -31,7 +29,7 @@ const Hotel = () => {
   // booking
   const [openModal, setOpenModal] = useState(false);
 
-  const { data, loading, error, reFetch } = useFetch(
+  const { data, loading } = useFetch(
     `http://localhost:5000/api/v1/hotels/find/${id}`
   );
 
