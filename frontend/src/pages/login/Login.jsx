@@ -5,17 +5,17 @@ import { AuthContext } from "../../context/AuthContext";
 import "./login.css";
 
 const Login = () => {
-  const [credentials, setCredentials] = useState({
+  const [credentials, setCreds] = useState({
     username: undefined,
     password: undefined,
   });
 
-  const { loading, error, dispatch } = useContext(AuthContext);
+  const { user, loading, error, dispatch } = useContext(AuthContext);
 
   const navigate = useNavigate();
 
   const handleChange = (e) => {
-    setCredentials((prev) => ({ ...prev, [e.target.id]: e.target.value }));
+    setCreds((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   };
 
   const handleClick = async (e) => {
@@ -26,6 +26,7 @@ const Login = () => {
         "http://localhost:5000/api/v1/auth/login",
         credentials
       );
+      console.log(res);
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
       navigate("/");
     } catch (err) {
