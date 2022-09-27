@@ -4,6 +4,7 @@ import Navbar from "../../components/navbar/Navbar";
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
 import MailList from "../../components/mailList/MailList";
+import Reserve from "../../components/reserve/Reserve";
 import {
   faCircleArrowLeft,
   faCircleArrowRight,
@@ -16,7 +17,6 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { SearchContext } from "../../context/SearchContext";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
-import Reserve from "../../components/reserve/Reserve";
 
 const Hotel = () => {
   const navigate = useNavigate();
