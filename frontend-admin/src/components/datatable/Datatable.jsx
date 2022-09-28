@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import useFetch from "../../hooks/useFetch";
 import axios from "axios";
 
-const Datatable = () => {
+const Datatable = ({ columns }) => {
   const location = useLocation();
   const path = location.pathname.split("/")[1];
 
@@ -59,8 +59,8 @@ const Datatable = () => {
       </div>
       <DataGrid
         className="datagrid"
-        rows={list}
-        columns={userColumns.concat(actionColumn)}
+        rows={data}
+        columns={columns.concat(actionColumn)}
         pageSize={9}
         rowsPerPageOptions={[9]}
         checkboxSelection
