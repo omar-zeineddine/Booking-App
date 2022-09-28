@@ -10,9 +10,8 @@ const Datatable = ({ columns }) => {
   const location = useLocation();
   const path = location.pathname.split("/")[1];
 
-  const [list, setList] = useState();
+  const [list, setList] = useState([]);
   const { data, loading, error } = useFetch(`/${path}`);
-  console.log(data);
 
   useEffect(() => {
     setList(data);
@@ -22,9 +21,7 @@ const Datatable = ({ columns }) => {
     try {
       await axios.delete(`/${path}/${id}`);
       setList(list.filter((item) => item._id !== id));
-    } catch (err) {
-      console.log(err);
-    }
+    } catch (err) {}
   };
 
   const actionColumn = [
@@ -59,7 +56,7 @@ const Datatable = ({ columns }) => {
       </div>
       <DataGrid
         className="datagrid"
-        rows={data}
+        rows={list}
         columns={columns.concat(actionColumn)}
         pageSize={9}
         rowsPerPageOptions={[9]}
