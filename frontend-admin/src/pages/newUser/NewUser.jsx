@@ -1,10 +1,10 @@
-import "./new.scss";
+import "./newUser.scss";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
 import { useState } from "react";
 
-const New = ({ inputs, title }) => {
+const NewUser = ({ inputs, title }) => {
   const [file, setFile] = useState("");
 
   return (
@@ -55,4 +55,4 @@ const New = ({ inputs, title }) => {
   );
 };
 
-export default New;
+export default NewUser;
