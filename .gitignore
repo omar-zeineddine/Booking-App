@@ -8,8 +8,6 @@ backend/.env
 
 # dependencies
 frontend/node_modules
-frontend/.pnp
-frontend.pnp.js
 
 # testing
 frontend/coverage
@@ -25,5 +23,23 @@ frontend/.env.test.local
 frontend/.env.production.local
 
 frontend/npm-debug.log*
-frontend/yarn-debug.log*
-frontend/yarn-error.log*
+
+# frontend-admin
+
+# dependencies
+frontend-admin/node_modules
+
+# testing
+frontend-admin/coverage
+
+# production
+frontend-admin/build
+
+# misc
+frontend-admin/.DS_Store
+frontend-admin/.env.local
+frontend-admin/.env.development.local
+frontend-admin/.env.test.local
+frontend-admin/.env.production.local
+
+frontend-admin/npm-debug.log*
