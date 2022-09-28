@@ -24,7 +24,8 @@ const Login = () => {
     try {
       const res = await axios.post(
         "http://localhost:5000/api/v1/auth/login",
-        credentials
+        credentials,
+        { withCredentials: true }
       );
       if (res.data.isAdmin) {
         dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
