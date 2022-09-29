@@ -9,6 +9,7 @@ import useFetch from "../../hooks/useFetch";
 const NewHotel = () => {
   const [files, setFiles] = useState("");
   const [info, setInfo] = useState({});
+  const [rooms, setRooms] = useState([]);
 
   const { data, loading, error } = useFetch("/rooms");
 
@@ -16,7 +17,13 @@ const NewHotel = () => {
     setInfo((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   };
 
-  const handleSelect = (e) => {};
+  const handleSelect = (e) => {
+    const value = Array.from(
+      e.target.selectedOptions,
+      (option) => option.value
+    );
+    setRooms(value);
+  };
 
   return (
     <div className="new">
