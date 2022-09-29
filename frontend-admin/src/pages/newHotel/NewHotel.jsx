@@ -25,7 +25,7 @@ const NewHotel = () => {
           <div className="left">
             <img
               src={
-                file
+                files
                   ? URL.createObjectURL(files[0])
                   : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
               }
@@ -58,6 +58,14 @@ const NewHotel = () => {
                   />
                 </div>
               ))}
+
+              <div className="formInput">
+                <label>Featured</label>
+                <select id="featured" onChange={handleChange}>
+                  <option value="">No</option>
+                  <option value="">Yes</option>
+                </select>
+              </div>
               <button>Send</button>
             </form>
           </div>
