@@ -4,16 +4,19 @@ import Navbar from "../../components/navbar/Navbar";
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
 import { useState } from "react";
 import { hotelInputs } from "../../formSource";
+import useFetch from "../../hooks/useFetch";
 
 const NewHotel = () => {
   const [files, setFiles] = useState("");
   const [info, setInfo] = useState({});
 
+  const { data, loading, error } = useFetch("/rooms");
+
   const handleChange = (e) => {
     setInfo((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   };
 
-  const handleSelect = () => {};
+  const handleSelect = (e) => {};
 
   return (
     <div className="new">
@@ -70,8 +73,14 @@ const NewHotel = () => {
               <div className="selectRooms">
                 <label>Rooms</label>
                 <select id="rooms" multiple onChange={handleSelect}>
-                  <option value="">No</option>
-                  <option value="">Yes</option>
+                  {loading
+                    ? "loading"
+                    : data &&
+                      data.map((room) => (
+                        <option key={room._id} value={room._id}>
+                          {room.title}
+                        </option>
+                      ))}
                 </select>
               </div>
               <button>Send</button>
