@@ -13,6 +13,8 @@ const NewHotel = () => {
     setInfo((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   };
 
+  const handleSelect = () => {};
+
   return (
     <div className="new">
       <Sidebar />
@@ -58,10 +60,16 @@ const NewHotel = () => {
                   />
                 </div>
               ))}
-
               <div className="formInput">
                 <label>Featured</label>
                 <select id="featured" onChange={handleChange}>
+                  <option value="">No</option>
+                  <option value="">Yes</option>
+                </select>
+              </div>
+              <div className="selectRooms">
+                <label>Rooms</label>
+                <select id="rooms" multiple onChange={handleSelect}>
                   <option value="">No</option>
                   <option value="">Yes</option>
                 </select>
