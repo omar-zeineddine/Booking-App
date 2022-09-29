@@ -5,6 +5,7 @@ import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUpload
 import { useState } from "react";
 import { hotelInputs } from "../../formSource";
 import useFetch from "../../hooks/useFetch";
+import axios from "axios";
 
 const NewHotel = () => {
   const [files, setFiles] = useState("");
@@ -23,6 +24,36 @@ const NewHotel = () => {
       (option) => option.value
     );
     setRooms(value);
+  };
+
+  const handleClick = async (e) => {
+    e.preventDefault();
+    try {
+      const list = await Promise.all(
+        Object.values(files).map(async (file) => {
+          const data = new FormData();
+          data.append("file", file);
+          data.append("upload_preset", "upload");
+          const uploadRes = await axios.post(
+            "https://api.cloudinary.com/v1_1/derv9wr4r/image/upload",
+            data
+          );
+
+          const { url } = uploadRes.data;
+          return url;
+        })
+      );
+
+      const newhotel = {
+        ...info,
+        rooms,
+        photos: list,
+      };
+
+      await axios.post("/hotels", newhotel);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -90,7 +121,7 @@ const NewHotel = () => {
                       ))}
                 </select>
               </div>
-              <button>Send</button>
+              <button onClick={handleClick}>Send</button>
             </form>
           </div>
         </div>
