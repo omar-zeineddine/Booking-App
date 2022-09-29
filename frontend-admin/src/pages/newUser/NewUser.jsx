@@ -27,6 +27,7 @@ const NewUser = ({ inputs, title }) => {
       // console.log(uploadRes.data);
       const { url } = uploadRes.data;
 
+      // api request
       const newUser = {
         ...info,
         img: url,
